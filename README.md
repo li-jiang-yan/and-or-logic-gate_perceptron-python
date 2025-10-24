@@ -1,5 +1,5 @@
-# ann-and-or-logic-gate-training
-This endeavors to implement the training of an AND/OR logic gate using artificial neural networks
+# AND/OR Logic Gates using Single-Layer Perceptron
+Coded a perceptron from scratch in Python as well as spreadsheets to model AND/OR logic gates, training the model using gradient descent. Implemented the single-layer perceptron using TensorFlow Keras as well. This repository also features a Python script used to determine an appropriate learning rate as the default learning rate is too slow.
 
 # Optimization Theory
 We want to minimize
