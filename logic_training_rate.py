@@ -1,4 +1,4 @@
-# Finding the optimal training rate so we don't have to run that many epochs (max 30)
+# Finding the optimal learning rate so we don't have to run that many epochs (max 30)
 from math import exp
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,13 +26,13 @@ lookup_table = [
     [1, 1]
 ]
 
-# Iterating over all training rates
-training_rate_list = np.arange(0.1, 100, 0.1)
+# Iterating over all learning rates
+learning_rate_list = np.arange(0.1, 100, 0.1)
 epoch = 30
 
 for f in [get_and, get_or]:
     err_final_list = []
-    for training_rate in training_rate_list:
+    for learning_rate in learning_rate_list:
         w1 = 0.3
         w2 = -0.7
         b = 0.1
@@ -44,9 +44,9 @@ for f in [get_and, get_or]:
                 Ot = f(i1, i2)          # target output
                 Or = sigmoid(i1 * w1 + i2 * w2 + b)
                 err = Ot - Or
-                Delta_w1 = training_rate * Or * err * (1 - Or) * i1
-                Delta_w2 = training_rate * Or * err * (1 - Or) * i2
-                Delta_b = training_rate * Or * err * (1 - Or)
+                Delta_w1 = learning_rate * Or * err * (1 - Or) * i1
+                Delta_w2 = learning_rate * Or * err * (1 - Or) * i2
+                Delta_b = learning_rate * Or * err * (1 - Or)
                 w1 += Delta_w1
                 w2 += Delta_w2
                 b += Delta_b
@@ -54,8 +54,8 @@ for f in [get_and, get_or]:
                     err_final += abs(err)
         err_final_list.append(err_final)
     label = function_to_label[f]
-    plt.plot(training_rate_list, err_final_list, "-x", label=label)
-plt.xlabel("Training rate")
+    plt.plot(learning_rate_list, err_final_list, "-x", label=label)
+plt.xlabel("Learning rate")
 plt.ylabel("Total absolute error")
 plt.legend()
 plt.show()
