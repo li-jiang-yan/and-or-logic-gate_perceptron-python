@@ -57,5 +57,6 @@ for f in [get_and, get_or]:
     plt.plot(learning_rate_list, err_final_list, "-x", label=label)
 plt.xlabel("Learning rate")
 plt.ylabel("Total absolute error")
+plt.title("Total absolute error vs learning rate (after 30 epochs)")
 plt.legend()
 plt.show()
